@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Employee Form</title>
+</head>
+
+<body>
+	<div class="container">
+		
+		<p class="h4 mb-4">Save Customer</p>
+		
+		
+		<form action="#" th:action="@{/customers/save}" th:object="${customer}" method="POST">
+		
+			<!-- Add hidden field to manage update -->
+			<input type="hidden" th:field="*{id}"/>
+		
+			<input type="text" 	th:field="*{firstName}" placeholder="first Name"  class="form-control mb-4 col-6"/>
+			<input type="text" 	th:field="*{lastName}" placeholder="last Name"  class="form-control mb-4 col-6"/>
+			<input type="text" 	th:field="*{address}" placeholder="Address"  class="form-control mb-4 col-6"/>
+			<input type="text" 	th:field="*{email}" placeholder="email"  class="form-control mb-4 col-6"/>
+			<input type="text" 	th:field="*{mobile}" placeholder="Mobile number"  class="form-control mb-4 col-6"/>
+			<input type="text" 	th:field="*{total}" placeholder="Total"  class="form-control mb-4 col-6"/>
+			<input type="text" 	th:field="*{uniqueCustomer}" placeholder="unique id"  class="form-control mb-4 col-6"/>
+			
+			<button type="submit" class="btn btn-info col-2 mb-2">Save</button>	
+		</form>
+		
+		<a th:href="@{/customers/list}"  class="btn btn-primary btn-sm">Back-to-List</a>
+	</div>
+</body>
+</html>

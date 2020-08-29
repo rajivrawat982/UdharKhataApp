@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Customer Order</title>
+</head>
+
+<body>
+
+<div class="container">
+	<div>
+		<a th:href="@{/customers/list}"  class="btn btn-primary btn-sm float-right mr-3 mt-2">Back to Customers list</a>
+	</div>
+	<br>
+	<br>
+	<h3>Customer Detail</h3>
+	<hr>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Address</th>
+				<th>Mobile</th>
+				<th>UniqueId</th>
+				<th>Amount Due</th>
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempCustomer : ${customer}">
+				<td th:text="${tempCustomer.firstName + ' ' + tempCustomer.lastName}">Static content</td>
+				<td th:text="${tempCustomer.email}"></td>
+				<td th:text="${tempCustomer.address}"></td>
+				<td th:text="${tempCustomer.mobile}"></td>
+				<td th:text="${tempCustomer.uniqueCustomer}"></td>
+				<td th:text="${tempCustomer.total}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+	<h3>Orders</h3>
+	<hr>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Description</th>
+				<th>Amount</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempOrder : ${orders}">
+			
+				<td th:text="${tempOrder.date}" />	
+				<td th:text="${tempOrder.time}" />	
+				<td th:text="${tempOrder.detail}" />
+				<td th:text="${tempOrder.amount}" />	
+	
+		
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>
+
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	
+	</style>
+	<title>Home Page</title>
+</head> 
+<body>
+	<div class="container">
+		<div class="homepage">
+			<h4>Access to Shop Owner</h4>
+			<a th:href="@{/customers/list}"  class="btn btn-primary btn-sm mb-4">view Customer list</a>
+			<hr>
+		
+			<h4>Access to Customer</h4>
+				<a th:href="@{/customers/uniqueForm}" class="btn btn-info btn-sm mb-4">click here</a>
+				
+			<hr>
+			<br>
+			<!-- Add a logout button -->
+			<form action="#" th:action="@{/logout}" 
+				   method="POST">
+		
+				<input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+		
+			</form>
+		</div>
+	</div>
+	
+</body>
+</html>

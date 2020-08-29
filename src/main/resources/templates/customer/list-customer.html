@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Customer Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Customers Directory</h3>
+	<hr>
+	
+	<a th:href="@{/customers/showFormForAdd}"  class="btn btn-primary btn-sm mb-4">Add Customer</a>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Mobile</th>
+				<th>Amount Due</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempCustomer : ${customers}">
+			
+				<td th:text="${tempCustomer.firstName + ' ' + tempCustomer.lastName}" />	
+				<td th:text="${tempCustomer.address}" />	
+				<td th:text="${tempCustomer.mobile}" />	
+				<td th:text="${tempCustomer.total}"/>
+				<td>
+					
+					<!-- button to add new order entry -->
+					<a th:href="@{/customers/showFormForNewOrder(customerId=${tempCustomer.id})}"
+						class="btn btn-info btn-sm ml-4">
+					New Entry
+					</a>
+					
+					<!-- Add pay button -->
+					<a th:href="@{/customers/pay(customerId=${tempCustomer.id})}"
+						class="btn btn-success btn-sm ml-2">
+					PAY
+					</a>
+					
+					<!-- Add customer delete button  -->
+					<a th:href="@{/customers/delete(customerId=${tempCustomer.id})}"
+						class="btn btn-danger ml-2 btn-sm"
+						onClick="if (! (confirm('Are you sure you want to delete the Customer'))) return false">
+					Delete
+					</a>
+					
+					<!-- Add Orders button -->
+					<a th:href="@{/customers/customerPage(customerId=${tempCustomer.id})}"
+						class="btn btn-secondary btn-sm ml-4">
+					more
+					</a>
+				</td>
+		
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+	<!-- Add a logout button -->
+	<form action="#" th:action="@{/logout}" 
+			   method="POST">
+	
+		<input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+	
+	</form>
+	
+</div>
+	
+</body>
+</html>
+
+
+
